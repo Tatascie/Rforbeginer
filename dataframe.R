@@ -86,12 +86,35 @@ Studenten[ alter < 24, ]
 #8 männlich 26 ja
 #7 weiblich 20 ja
 #8 weiblich 20 nein
-#b) Generieren Sie in R einen Data Frame des Alters und des Taschengeldes aller
-# Kinder mit höchstens 7 Jahren.
+age <- c(6, 7, 6, 7, 8, 7, 8)
+gender <- c("male", "male", "female", "female", "male", "female", "female")
+allowance <- c(12, 18, 14, 20, 26, 20, 20)
+bike <- c("ja","ja", "nein"," ja", "ja", "ja", "nein" )
+Kids <- data.frame(Age = age, Gender = gender, Allowance = allowence, Bike = bike)
+
+#b) 
+#Generieren Sie in R einen Data Frame des Alters und des Taschengeldes aller
+#Kinder mit höchstens 7 Jahren
+#Data Frame des Alters und des Taschengeldes: 
+Kids[, c(1,3)]
+#einen Data Frame des Alters und des Taschengeldes aller
+#Kinder mit höchstens 7 Jahren
+Kids[Kids$Age <= 7, c(1,3)]
+
+#note:
+# BEFORE COMMA: is the condition 
+# AFTER COMMA: is the column of the data frame, whose info we want to call out 
+
+#just another notice: 
+# for [], when comma comes at first, it calls out only what after the comma
+# when comma appears at the end, the data frame structure will be presented in 
+# the result.
+
 #c) Berechnen Sie in R die Summe des Taschengelds aller Fahrradbesitzer.
+sume(Kids[Kids$Bike = "ja", 3])
+Kids[Kids$Bike == "ja",] 
 
-
-
+sum(Kids[Kids$Bike != "ja","Allowance"]) 
 
 
 
