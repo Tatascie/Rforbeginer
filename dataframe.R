@@ -89,7 +89,7 @@ Studenten[ alter < 24, ]
 age <- c(6, 7, 6, 7, 8, 7, 8)
 gender <- c("male", "male", "female", "female", "male", "female", "female")
 allowance <- c(12, 18, 14, 20, 26, 20, 20)
-bike <- c("ja","ja", "nein"," ja", "ja", "ja", "nein" )
+bike <- c("ja", "ja", "nein", "ja", "ja", "ja", "nein" )
 Kids <- data.frame(Age = age, Gender = gender, Allowance = allowence, Bike = bike)
 
 #b) 
@@ -101,21 +101,31 @@ Kids[, c(1,3)]
 #Kinder mit höchstens 7 Jahren
 Kids[Kids$Age <= 7, c(1,3)]
 
-#note:
+#note: for 2 arguments 
 # BEFORE COMMA: is the condition 
-# AFTER COMMA: is the column of the data frame, whose info we want to call out 
+# AFTER COMMA: is the column/columms of the data frame, whose info we want to call out 
 
-#just another notice: 
-# for [], when comma comes at first, it calls out only what after the comma
+# for 1 argument[], when comma comes at first, it calls out only what after the comma
 # when comma appears at the end, the data frame structure will be presented in 
 # the result.
 
 #c) Berechnen Sie in R die Summe des Taschengelds aller Fahrradbesitzer.
-sume(Kids[Kids$Bike = "ja", 3])
-Kids[Kids$Bike == "ja",] 
+sum(Kids[Kids$Bike == "ja", 3])
+#or 
+sum(Kids[Kids$Bike == "ja", "Allowance"])
+Kids[bike == "ja",3] 
 
+# to call the info of bike we can use 2 methods:
+# 1:  call out the index: Kids$Bike
+# 2:  call the vector bike 
+
+
+#sum of allowance of the kids who do not have bike
 sum(Kids[Kids$Bike != "ja","Allowance"]) 
 
+mean(Kids[Kids$Bike == "ja", "Allowance"])
+mean(Kids[Kids$Bike != "ja","Allowance"])
+mean(Kids[Kids$Bike == "nein","Allowance"])
 
 
 
